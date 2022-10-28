@@ -1,11 +1,12 @@
 package com.conzentrate;
 
+import java.util.List;
+import java.util.ArrayList;
 import com.conzentrate.util.ArgsFactory;
 import com.conzentrate.data.Args;
-import com.conzentrate.calc.base.BaseCost;
-import com.conzentrate.calc.base.FreightCost;
-import com.conzentrate.calc.secondary.CurrencyTranslator;
-import com.conzentrate.calc.secondary.VAT;
+import com.conzentrate.calc.base.IBaseCost;
+import com.conzentrate.calc.secondary.ISecondaryCost;
+import com.conzentrate.calc.PriceBuilder;
 
 /**
  * App for calucalting prices
@@ -13,17 +14,15 @@ import com.conzentrate.calc.secondary.VAT;
  */
 public class App 
 {
-    public static double roundPrice(double price) {
-        return Math.round(price * 100) / 100.0;
+    public double calculate(Args args) {
+        Configuration conf = new Configuration();
+        PriceBuilder priceBuilder = new PriceBuilder(conf.getBaseCosts(), 
+                                                     conf.getSecondaryCosts());
+        return priceBuilder.calculate(args);
     }
 
-    public double calculate(Args args) {
-        double price = new BaseCost().calculate(args) + new FreightCost().calculate(args);
-
-        double priceAfterVAT = new VAT().calculate(args, price);
-        double priceVATWithCurrency = new CurrencyTranslator().calculate(args, priceAfterVAT);
-        
-        return priceVATWithCurrency;
+    public static double roundPrice(double price) {
+        return Math.round(price * 100) / 100.0;
     }
 
     public static void main( String[] cliArgs )
