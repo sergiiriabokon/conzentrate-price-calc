@@ -10,13 +10,16 @@ public class Args {
 
     public Args(int amount, 
                 double price, 
-                PriceType priceType) {
+                PriceType priceType,
+                CountryCode countryCode,
+                Currency inputCurrency,
+                Currency outputCurrency) {
         this._amount = amount;
         this._price = price;
         this._priceType = priceType;
-        this._countryCode = CountryCode.DK;
-        this._inputCurrency = Currency.DKK;
-        this._outputCurrency = Currency.SEK;
+        this._countryCode = countryCode;
+        this._inputCurrency = inputCurrency;
+        this._outputCurrency = outputCurrency;
     }
 
     public int getAmount() {

@@ -1,5 +1,4 @@
 package com.conzentrate;
-import java.util.Properties;
 
 import com.conzentrate.util.ArgsFactory;
 import com.conzentrate.data.Args;
@@ -23,7 +22,7 @@ public class App
     {
         System.out.println( "Conzentrate Test Task!" );
 
-        Args args = ArgsFactory.parseArgs(cliArgs);
+        Args args = new ArgsFactory().parseArgs(cliArgs);
         double price = new BaseCost().calculate(args) + new FreightCost().calculate(args);
         price = App.roundPrice(price);
 
@@ -31,6 +30,6 @@ public class App
         double priceVATWithCurrency = new CurrencyTranslator().translate(args, priceAfterVAT);
 
         System.out.println(args);
-        System.out.println("Price is" + priceVATWithCurrency);
+        System.out.printf("Price is %.2f \n", priceVATWithCurrency);
     }
 }
