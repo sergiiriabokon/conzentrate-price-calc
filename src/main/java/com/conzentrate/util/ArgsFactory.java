@@ -12,7 +12,7 @@ public class ArgsFactory {
     private static Currency DEFAULT_OUTPUT_CURRENCY = Currency.DKK;
     private static String OUTPUT_CURRENCY_KEY = "--output-currency=";
 
-    private static CountryCode DEFAULT_COUNTRY_CODE = CountryCode.DK;
+    private static CountryCode DEFAULT_COUNTRY_CODE = CountryCode.DEFAULT;
     private static String COUNTRY_CODE_KEY = "--vat=";
     
     private static Args DEFAULT_ARGS = new Args(0, 0, PriceType.BOOK, DEFAULT_COUNTRY_CODE, DEFAULT_INPUT_CURRENCY, DEFAULT_OUTPUT_CURRENCY );

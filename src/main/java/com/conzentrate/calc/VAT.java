@@ -10,12 +10,12 @@ public class VAT {
     public double calculate(Args args, Double price) {
         double vatFactor = this.getVAT(args) + 1.0;
         double result = vatFactor * price;
-        
+
         return App.roundPrice(result);
     }
 
     private double getVAT(Args args) {
-        double vat = .25;
+        double vat = 0;
         switch(args.getCountryCode()) {
             case DK:
             case NO:
@@ -34,7 +34,7 @@ public class VAT {
             break;
 
             default:
-                vat = 0.25;
+                vat = 0;
             break;
         }
 

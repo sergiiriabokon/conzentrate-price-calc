@@ -30,6 +30,6 @@ public class App
         double priceVATWithCurrency = new CurrencyTranslator().translate(args, priceAfterVAT);
 
         System.out.println(args);
-        System.out.printf("Price is %.2f \n", priceVATWithCurrency);
+        System.out.printf("Price is %.2f %s \n", priceVATWithCurrency, args.getOutputCurrency().toString());
     }
 }
