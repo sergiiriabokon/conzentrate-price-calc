@@ -1,13 +1,13 @@
-package com.conzentrate.calc;
+package com.conzentrate.calc.secondary;
 
 import com.conzentrate.App;
 import com.conzentrate.data.Args;
 import com.conzentrate.data.CountryCode;
 import com.conzentrate.data.PriceType;
 
-public class VAT {
+public class VAT implements ISecondaryCost {
 
-    public double calculate(Args args, Double price) {
+    public double calculate(Args args, double price) {
         double vatFactor = this.getVAT(args) + 1.0;
         double result = vatFactor * price;
 

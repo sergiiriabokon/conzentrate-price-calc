@@ -17,6 +17,9 @@ public class ArgsFactory {
     
     private static Args DEFAULT_ARGS = new Args(0, 0, PriceType.BOOK, DEFAULT_COUNTRY_CODE, DEFAULT_INPUT_CURRENCY, DEFAULT_OUTPUT_CURRENCY );
     
+    private static ArgsFactory _instance = new ArgsFactory();
+    private ArgsFactory() {}
+
     private Currency findInputCurrency(String[] args) {
        return this.findCurrency(args, 
                                     INPUT_CURRENCY_KEY, 
@@ -54,19 +57,28 @@ public class ArgsFactory {
         return result;
     }
 
+    private PriceType parsePriceType(String str) {
+        String onlinePriceType = PriceType.ONLINE.toString();
+        return onlinePriceType.equals(str.toUpperCase())
+                    ? PriceType.ONLINE
+                    : PriceType.BOOK;
+    }
+
     public Args parseArgs(String[] args) {
         Args argsObj = ArgsFactory.DEFAULT_ARGS;
 
         if (args.length >= 3) {
             argsObj = new Args(Integer.parseInt(args[0]), 
                             Double.parseDouble(args[1]),
-                            "ONLINE".equals(args[2].toUpperCase())
-                                ? PriceType.ONLINE
-                                : PriceType.BOOK,
+                            parsePriceType(args[2]),
                             findCountryCode(args),
                             findInputCurrency(args),
                             findOutputCurrency(args));
         }
         return argsObj;
+    }
+
+    public static ArgsFactory getInstance() {
+        return ArgsFactory._instance;
     }
 }

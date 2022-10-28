@@ -1,12 +1,13 @@
-package com.conzentrate.calc;
+package com.conzentrate.calc.base;
 
 import com.conzentrate.data.Args;
+import com.conzentrate.App;
 
-public class FreightCost implements IFreightCost {
+public class FreightCost implements IBaseCost {
     private int BASE_FREIGHT = 50;
     private int ADDITIONAL_FREIGHT_PER_10 = 25;
 
-    public Double calculate(Args args) {
+    public double calculate(Args args) {
         double price = 0;
 
         double additionalFreight = args.getAmount() > 10 
@@ -15,6 +16,6 @@ public class FreightCost implements IFreightCost {
 
         price = BASE_FREIGHT + additionalFreight;
         
-        return price;
+        return App.roundPrice(price);
     }
 }
