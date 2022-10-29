@@ -6,6 +6,12 @@ import com.conzentrate.data.CountryCode;
 import com.conzentrate.data.PriceType;
 
 public class VAT implements ISecondaryCost {
+    
+    private static final double SCANDINAVIAN_VAT  = 0.25;
+    private static final double GREAT_BRITAIN_VAT = 0.20;
+    private static final double GERMAN_ONLINE_VAT = 0.19;
+    private static final double GERMAN_BOOK_VAT   = 0.12;
+    private static final double DEFAULT_VAT       = 0;
 
     public double calculate(Args args, double price) {
         double vatFactor = this.getVAT(args) + 1.0;
@@ -20,22 +26,21 @@ public class VAT implements ISecondaryCost {
             case DK:
             case NO:
             case SE:
-                vat = 0.25;
+                vat = SCANDINAVIAN_VAT;
             break;
 
             case GB:
-                vat = 0.20;
+                vat = GREAT_BRITAIN_VAT;
             break;
 
             case DE: 
                 vat = args.getPriceType() == PriceType.ONLINE 
-                        ? 19 
-                        : 12;
+                        ? GERMAN_ONLINE_VAT 
+                        : GERMAN_BOOK_VAT;
             break;
 
             default:
-                vat = 0;
-            break;
+                vat = DEFAULT_VAT;
         }
 
         return vat;
