@@ -31,3 +31,11 @@ Total price = amount x price + freight
 ```
 
 While **Secondary costs** are calculated by applying a factor to previously calculated basic costs. These are VAT and currency translations.
+
+## Running unit tests
+
+Two test cases are written and can be run by
+
+```
+mvn test
+```
