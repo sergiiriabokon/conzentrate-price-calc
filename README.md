@@ -1,6 +1,6 @@
 # Price Calculator
 
-The code has been written in accordance with Java 7 syntax, i.e. it uses enums, but it doesn't leverage Stream API and Lambdas.
+The code has been written in accordance with *Java 7* syntax, i.e. it uses enums, but it doesn't leverage Stream API and Lambdas.
 
 However my local environment is using *openJDK v 16.0.1* and *maven 3.8.6*
 
