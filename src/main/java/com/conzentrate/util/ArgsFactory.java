@@ -5,6 +5,9 @@ import com.conzentrate.data.CountryCode;
 import com.conzentrate.data.PriceType;
 import com.conzentrate.data.Currency;
 
+/**
+ * Parses CLI arguments to Apps parameters.
+ */
 public class ArgsFactory {
     private static Currency DEFAULT_INPUT_CURRENCY = Currency.DKK;
     private static String INPUT_CURRENCY_KEY = "--input-currency=";

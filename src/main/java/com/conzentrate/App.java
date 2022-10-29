@@ -27,12 +27,10 @@ public class App
 
     public static void main( String[] cliArgs )
     {
-        System.out.println( "Conzentrate Test Task!" );
-
         Args args = ArgsFactory.getInstance().parseArgs(cliArgs);
         double price = new App().calculate(args);
 
-        System.out.printf("Price is %.2f %s \n", 
+        System.out.printf("%.2f %s \n", 
                           price, 
                           args.getOutputCurrency().toString());
     }
