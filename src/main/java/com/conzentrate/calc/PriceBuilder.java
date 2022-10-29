@@ -6,6 +6,12 @@ import com.conzentrate.calc.base.IBaseCost;
 import com.conzentrate.calc.secondary.ISecondaryCost;
 import com.conzentrate.data.Args;
 
+/**
+ * Builder pattern implementation for calculating
+ * base and secondary costs. Base costs are accumulated, they
+ * depend on Args object. Secondary costs depend on a previous
+ * price and calculated by applying a factor to the one.
+ */
 public class PriceBuilder {
     private List<IBaseCost> _baseCosts;
     private List<ISecondaryCost> _secondaryCosts;

@@ -1,5 +1,9 @@
 package com.conzentrate.data;
 
+/**
+ * Holds various properties for running an application.
+ * These properties are provided in form of command line arguments.
+ */
 public class Args {
     private int _amount;
     private double _price;
